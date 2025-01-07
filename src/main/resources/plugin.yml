@@ -1,0 +1,47 @@
+name: StaffMode
+version: ${project.version}
+main: org.sandbytes.staffmode.StaffMode
+api-version: '1.13'
+author: Marcify
+
+commands:
+  staffmode:
+    description: 'Toggle staffmode'
+    usage: '/staffmode'
+
+permissions:
+  staffmode.admin:
+    description: 'Allows use of all staffmode commands'
+    default: op
+    children:
+      staffmode.use: true
+      staffmode.containers.open: true
+      staffmode.containers.modify: true
+      staffmode.permission.add: true
+      staffmode.permission.remove: true
+      staffmode.reload: true
+      staffmode.help: true
+  staffmode.use:
+    description: Allows you to use the /staffmode command
+    default: op
+  staffmode.containers.open:
+    description: Allows player to open containers while in staffmode
+    default: op
+  staffmode.containers.modify:
+    description: Allows player to modify containers while in staffmode
+    default: op
+  staffmode.permission:
+    description: Allows you to add or remove permissions from staffmode
+    default: op
+  staffmode.permission.add:
+    description: Allows you to add a permission to staffmode
+    default: op
+  staffmode.permission.remove:
+    description: Allows you to remove a permission from staffmode
+    default: op
+  staffmode.reload:
+    description: Reload the plugin config
+    default: op
+  staffmode.help:
+    description: Display the commands of staffmode
+    default: op

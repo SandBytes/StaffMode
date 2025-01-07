@@ -1,0 +1,83 @@
+# --------------------------------------------------------------
+#                    StaffMode Configuration
+#                         by SandBytes
+# --------------------------------------------------------------
+# Found a bug? Submit an issue in https://github.com/SandBytes/StaffMode/issues
+# and I will be glad to fix it as soon as possible. Thank you!
+# --------------------------------------------------------------
+
+# Allowed permissions for staff mode
+# This section lists the permissions that players are allowed to use while they are in staff mode.
+# For example, we have essentials.tp listed here, which allows players to use the /tp command while in staff mode.
+# You need LuckPerms plugin to use this feature.
+allowed-permissions:
+  - essentials.tp
+
+# Messages configuration
+# This section contains all the customizable messages that are displayed to players.
+messages:
+  # Message shown when a player does not have the required permission to use a command.
+  # %permission$ is the permission node that the player is missing.
+  no-permission: "&7[&b&lStaffMode&7] &rYou don't have permission to use this command. &7&o(%permission%)"
+
+  # Message shown when a player attempts to use an unknown command.
+  unknown-command: "&7[&b&lStaffMode&7] &rUnknown command."
+
+  # Message shown when a player successfully enables staff mode.
+  staffmode-enabled: "&7[&b&lStaffMode&7] &rYou have enabled staff mode."
+
+  # Message shown when a player successfully disables staff mode.
+  staffmode-disabled: "&7[&b&lStaffMode&7] &rYou have disabled staff mode."
+
+  # Message shown when a player uses a command incorrectly.
+  invalid-usage: "&7[&b&lStaffMode&7] &rInvalid command usage."
+
+  # Message shown when a player uses the staff mode permission command incorrectly.
+  staffmode-permission-usage: "&7[&b&lStaffMode&7] &rUsage: /staffmode permission <add/remove> <permission>"
+
+  # Message shown when a player uses the command to add a permission incorrectly.
+  add-permission-usage: "&7[&b&lStaffMode&7] &rUsage: /staffmode permission add <permission>"
+
+  # Message shown when a player uses the command to remove a permission incorrectly.
+  remove-permission-usage: "&7[&b&lStaffMode&7] &rUsage: /staffmode permission remove <permission>"
+
+  # Message shown when a permission is successfully added to the allowed permissions list.
+  # %permission% is the permission node that was added.
+  permission-added: "&7[&b&lStaffMode&7] &rPermission %permission% has been added to allowed list."
+
+  # Message shown when a permission is successfully removed from the allowed permissions list.
+  # %permission% is the permission node that was removed.
+  permission-removed: "&7[&b&lStaffMode&7] &rPermission %permission% has been removed from allowed list."
+
+  # Message shown when a player attempts to add a permission that already exists in the allowed permissions list.
+  # %permission% is the permission node that already exists.
+  permission-exists: "&7[&b&lStaffMode&7] &rPermission %permission% already exists in the allowed list."
+
+  # Message shown when a player attempts to remove a permission that does not exist in the allowed permissions list.
+  # %permission% is the permission node that does not exist.
+  permission-not-found: "&7[&b&lStaffMode&7] &rPermission %permission% not found in the allowed list."
+
+  # Message shown when a non-player (e.g., console) tries to execute a command.
+  only-players: "&7[&b&lStaffMode&7] &rOnly players can use this command."
+
+  # Message shown when the plugin configuration (config.yml) is successfully reloaded.
+  reload-message: "&7[&b&lStaffMode&7] &rConfiguration reloaded."
+
+  # Message shown when a player tries to use a command that is not allowed in staff mode.
+  command-not-allowed: "&7[&b&lStaffMode&7] You are not allowed to use this command in staff mode."
+
+  # Message shown when a player tries to access containers (chests, furnaces, etc.) in staff mode without permission.
+  # staffmode.containers.open
+  no-containers-access: "&7[&b&lStaffMode&7] &rYou are not allowed to access containers in staff mode."
+
+  # Message shown when a player tries to modify containers (chests, furnaces, etc.) in staff mode without permission.
+  # staffmode.containers.modify
+  no-modify-access: "&7[&b&lStaffMode&7] &rYou are not allowed to modify containers in staff mode."
+
+  # Header for the help command output.
+  help-header: "&e&lStaffMode Help"
+
+  # Format for each command description in the help command output.
+  # %command% is the command name.
+  # %description% is the command description.
+  help-commands: "&e/%command% - %description%"

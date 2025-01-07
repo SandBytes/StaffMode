@@ -22,10 +22,17 @@ public class StaffUtils {
     public static final Set<Player> staffModePlayers = new HashSet<>();
     public static final Map<String, CommandInfo> commands = new LinkedHashMap<>();
 
-    private static final LuckPerms luckPerms = LuckPermsProvider.get();
+    private static LuckPerms luckPerms = null;
+
+    static {
+        try {
+            luckPerms = LuckPermsProvider.get();
+        } catch (IllegalStateException e) {
+            luckPerms = null;
+        }
+    }
 
     public static void toggleStaffMode(Player player) {
-        User user = luckPerms.getUserManager().getUser(player.getUniqueId());
         if (savedLocations.containsKey(player)) {
             player.teleport(savedLocations.remove(player));
             player.setGameMode(savedGameModes.remove(player));
@@ -33,8 +40,14 @@ public class StaffUtils {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                     StaffConfig.getMessage("messages.staffmode-disabled")));
 
-            for (String permission : StaffConfig.getAllowedPermissions()) {
-                user.data().remove(Node.builder(permission).build());
+            if (luckPerms != null) {
+                User user = luckPerms.getUserManager().getUser(player.getUniqueId());
+                if (user != null) {
+                    for (String permission : StaffConfig.getAllowedPermissions()) {
+                        user.data().remove(Node.builder(permission).build());
+                    }
+                    luckPerms.getUserManager().saveUser(user);
+                }
             }
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -48,16 +61,20 @@ public class StaffUtils {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                     StaffConfig.getMessage("messages.staffmode-enabled")));
 
-            for (String permission : StaffConfig.getAllowedPermissions()) {
-                user.data().add(Node.builder(permission).build());
+            if (luckPerms != null) {
+                User user = luckPerms.getUserManager().getUser(player.getUniqueId());
+                if (user != null) {
+                    for (String permission : StaffConfig.getAllowedPermissions()) {
+                        user.data().add(Node.builder(permission).build());
+                    }
+                    luckPerms.getUserManager().saveUser(user);
+                }
             }
 
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 onlinePlayer.hidePlayer(StaffMode.getInstance(), player);
             }
         }
-
-        luckPerms.getUserManager().saveUser(user);
     }
 
     public static void addPermission(String[] args, CommandSender player) {

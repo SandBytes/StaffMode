@@ -3,6 +3,8 @@ version: ${project.version}
 main: org.sandbytes.staffmode.StaffMode
 api-version: '1.13'
 author: Marcify
+softdepend:
+  - LuckPerms
 
 commands:
   staffmode:

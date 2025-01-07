@@ -16,6 +16,7 @@ public final class StaffMode extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         StaffConfig.getInstance().loadConfig();
+        loadLuckPerms();
         loadCommands();
         loadEvents();
 
@@ -25,6 +26,12 @@ public final class StaffMode extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("StaffMode has been disabled!");
+    }
+
+    private void loadLuckPerms() {
+        if (getServer().getPluginManager().getPlugin("LuckPerms") == null) {
+            getLogger().warning("LuckPerms plugin is not found! Permission features will be disabled");
+        }
     }
 
     private void loadCommands() {
